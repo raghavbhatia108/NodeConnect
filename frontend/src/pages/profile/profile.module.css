@@ -1,0 +1,508 @@
+/* Profile Page - Responsive CSS with Full Mobile Support */
+
+.container{
+    padding: 1rem;
+    margin: 0 2rem;
+    background-color: #e8f3ff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (max-width: 1024px){
+  .container{ margin: 0 1.5rem; }
+}
+
+@media (max-width: 768px){
+  .container{ margin: 0; padding: 0.5rem; }
+}
+
+@media (max-width: 480px){
+  .container{ gap: 0.5rem; }
+}
+
+.backdropContainer{
+    height: 30vh;
+    background: url("https://img.freepik.com/premium-photo/dark-pink-purple-galaxy-patterned-background-illustration_53876-150102.jpg?semt=ais_hybrid&w=740&q=80");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 10px;
+}
+
+.backdropContainer img{
+    height: 10rem;
+    width: 10rem;
+    object-fit: cover;
+    position: absolute;
+    bottom: -70px;
+    left: 5%;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.backdropContainer img:hover{
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px){
+  .backdropContainer{ height: 18vh; }
+  .backdropContainer img{ height: 5.5rem; width: 5.5rem; bottom: -45px; left: 2%; }
+}
+
+@media (max-width: 480px){
+  .backdropContainer{ height: 15vh; }
+  .backdropContainer img{ height: 4.5rem; width: 4.5rem; left: 5%; bottom: -40px; }
+}
+
+.backdropOverlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+    width: 10rem;
+    position: absolute;
+    bottom: -70px;
+    left: 5%;
+    border-radius: 50%;
+    z-index: 3;
+    color: white;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.backdropOverlay:hover{
+   background-color: black;
+   opacity: 0.6;
+}
+
+@media (max-width: 768px){
+  .backdropOverlay{ height: 5.5rem; width: 5.5rem; bottom: -45px; }
+}
+
+@media (max-width: 480px){
+  .backdropOverlay{ height: 4.5rem; width: 4.5rem; bottom: -40px; }
+}
+
+.profileContainer__details {
+  padding-top: 6.6rem;
+}
+
+.profileContainer_details { 
+  padding-top: 6.6rem; 
+}
+
+@media (max-width: 768px){
+  .profileContainer_details{ padding-top: 4rem; }
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.card__profileContainer {
+  display: flex;
+}
+
+.card__profileContainer > img {
+  width: 3.4rem;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.connectButton {
+  padding-inline: 0.8rem;
+  padding-block: 0.3rem;
+  background: rgba(3, 93, 183, 0.905);
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.connectButton:hover{
+  background-color: rgba(3, 93, 183, 1);
+  transform: translateY(-2px);
+}
+
+.connectedButton {
+  padding-inline: 0.8rem;
+  padding-block: 0.3rem;
+  border: 1px solid rgba(3, 93, 183, 0.905);
+  outline: none;
+  color: rgba(3, 93, 183, 0.905);
+  background-color: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.connectedButton:hover{
+  background-color: rgba(3, 93, 183, 0.1);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px){
+  .connectButton, .connectedButton{ padding-inline: 0.6rem; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px){
+  .connectButton, .connectedButton{ width: 100%; padding-inline: 0.8rem; padding-block: 0.4rem; }
+}
+
+/* Recent activity styles */
+.recentActivity {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+  gap: 0.6rem;
+}
+
+@media (max-width: 768px){
+  .recentActivity{ padding-top: 2rem; }
+}
+
+.recentTitle {
+    padding-top: 1rem;
+  margin: 0 0 0.4rem 0;
+  font-size: 1rem;
+  color: #073763;
+}
+
+@media (max-width: 768px){
+  .recentTitle{ font-size: 0.95rem; }
+}
+
+@media (max-width: 480px){
+  .recentTitle{ font-size: 0.85rem; }
+}
+
+.noRecent {
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+
+.recentList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.4rem;
+}
+
+@media (max-width: 768px){
+  .recentList{ max-height: 50vh; }
+}
+
+@media (max-width: 480px){
+  .recentList{ max-height: 40vh; gap: 0.4rem; }
+}
+
+.postCard {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  background: #ffffff;
+  padding: 0.6rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(2, 19, 71, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.postCard:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(2, 19, 71, 0.15);
+}
+
+@media (max-width: 768px){
+  .postCard{ padding: 0.5rem; }
+}
+
+@media (max-width: 480px){
+  .postCard{ padding: 0.4rem; gap: 0.4rem; }
+}
+
+.postImage {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px){
+  .postImage{ width: 45px; height: 45px; }
+}
+
+@media (max-width: 480px){
+  .postImage{ width: 40px; height: 40px; }
+}
+
+.postContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.postBody {
+  margin: 0;
+  color: #1b2330;
+  line-height: 1.3;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.meta {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+@media (max-width: 480px){
+  .meta{ font-size: 0.75rem; gap: 0.6rem; }
+}
+
+.date {}
+.likes {
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.workHistory{
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ccc;
+}
+
+.workCard{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 1rem 2rem;
+    margin-top: 0.5rem;
+    box-shadow: 10px 10px 10px 0  rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.workCard:hover{
+  transform: translateY(-3px);
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 768px){
+  .workCard{ width: 100%; padding: 0.8rem 1.5rem; }
+}
+
+@media (max-width: 480px){
+  .workCard{ width: 100%; padding: 0.8rem 1rem; }
+}
+
+.workHistoryContainer{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px){
+  .workHistoryContainer{ flex-direction: column; align-items: stretch; }
+}
+
+.addWorkButton{
+    background-color: transparent;
+    border: 2px dotted #999;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 1rem 2rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.addWorkButton:hover{
+  border-color: rgba(3, 93, 183, 0.905);
+  color: rgba(3, 93, 183, 0.905);
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px){
+  .addWorkButton{ width: 100%; }
+}
+
+@media (max-width: 480px){
+  .addWorkButton{ padding: 0.8rem 1.2rem; }
+}
+
+.workHistory h4{
+    margin: 0;
+    color: #073763;
+}
+
+.workItem{
+    margin-top: 1rem;
+}
+
+.workItem h5{
+    margin: 0;
+    font-size: 1rem;
+    color: #111827;
+}
+
+.workItem p{
+    margin: 0.2rem 0 0 0;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.workItem .duration{
+    font-size: 0.85rem;
+    color: #6b7280;
+} 
+
+.workItem .description{
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.profileContainer_details input{
+    font-size:1rem;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profileContainer_details input:focus{
+    background-color: #f0f8ff;
+    box-shadow: 0 0 8px rgba(3, 93, 183, 0.3);
+}
+
+.profileContainer_details textarea{
+    font-size:1rem;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 1rem;
+    font-family: 'poppins', sans-serif;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profileContainer_details textarea:focus{
+    background-color: #f0f8ff;
+    box-shadow: 0 0 8px rgba(3, 93, 183, 0.3);
+}
+
+@media (max-width: 768px){
+  .profileContainer_details input, .profileContainer_details textarea{ font-size: 0.95rem; padding: 0.8rem; }
+}
+
+@media (max-width: 480px){
+  .profileContainer_details input, .profileContainer_details textarea{ font-size: 0.9rem; padding: 0.6rem; }
+}
+
+.commentsContainer {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  background-color: #000000a2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.allCommentsContainer{
+    height: 50vh;
+  width: 40vw;
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px){
+  .allCommentsContainer{ width: 50vw; }
+}
+
+@media (max-width: 768px){
+  .allCommentsContainer{ width: 90vw; height: 75vh; padding: 1rem; }
+}
+
+@media (max-width: 480px){
+  .allCommentsContainer{ width: 95vw; height: 80vh; padding: 0.8rem; }
+}
+
+.inputField {
+  padding-inline: 1.3rem;
+  padding-block: 0.8rem;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  width: 100%;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inputField:focus{
+  border-color: rgba(3, 93, 183, 0.905);
+  box-shadow: 0 0 8px rgba(3, 93, 183, 0.2);
+}
+
+@media (max-width: 768px){
+  .inputField{ font-size: 0.9rem; padding: 0.6rem 1rem; }
+}
+
+@media (max-width: 480px){
+  .inputField{ font-size: 0.85rem; padding: 0.5rem 0.8rem; }
+}
+
+.nameEdit{
+  font-size: 2rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.nameEdit:focus{
+  background-color: rgba(3, 93, 183, 0.1);
+}
+
+@media (max-width: 768px){
+  .nameEdit{ font-size: 1.5rem; }
+}
+
+@media (max-width: 480px){
+  .nameEdit{ font-size: 1.2rem; }
+}

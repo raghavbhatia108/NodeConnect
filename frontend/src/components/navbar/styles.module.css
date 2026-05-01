@@ -1,0 +1,108 @@
+.container {
+    padding: 1.2rem 2rem;
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.65);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem 1.2rem;
+    }
+}
+
+@media (max-width: 4800px) {
+    .container {
+        padding: 0.8rem 1rem;
+    }
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.navbar img {
+    width: 220px;
+    max-width: 220px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        gap: 0.8rem;
+    }
+    .navbar img {
+        width: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        gap: 0.6rem;
+    }
+    .navbar img {
+        width: 160px;
+    }
+}
+
+.navBarOptionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .navBarOptionContainer {
+        gap: 0.75rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .navBarOptionContainer {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+.buttonJoin {
+    width: fit-content;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.25s ease;
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    background: linear-gradient(135deg, #086cd7 0%, #064da9 100%);
+    color: white;
+    padding: 0.9rem 1.4rem;
+    border-radius: 999px;
+    border: none;
+    box-shadow: 0 6px 22px rgba(8, 108, 215, 0.2);
+}
+
+.buttonJoin:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(8, 108, 215, 0.24);
+}
+
+@media (max-width: 768px) {
+    .buttonJoin {
+        font-size: 0.95rem;
+        padding: 0.8rem 1.2rem;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .buttonJoin {
+        width: 100%;
+        text-align: center;
+    }
+}

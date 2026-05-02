@@ -7,8 +7,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev" : "nodemon server.js",
-
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -19,8 +19,10 @@
     "express": "^5.2.1",
     "mongoose": "^9.1.4",
     "multer": "^2.0.2",
-    "nodemon": "^3.1.11",
     "pdf-creator-node": "^2.3.5",
     "pdfkit": "^0.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }

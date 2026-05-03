@@ -104,9 +104,6 @@ const Dashboard = () => {
               </div>
               <div className={styles.postsContainer}>
                 {postState.posts.map((post) => {
-  const mediaUrl = post.media?.replace(/\\/g, "/");
-console.log("MEDIA URL:", mediaUrl);
-console.log(post)
                   return (
                     <div key={post._id} className={styles.singleCard}>
                       <div className={styles.singleCard_ProfileContainer}>
@@ -139,9 +136,9 @@ console.log(post)
                           <p>{post.body}</p>
                         </div>
                       )}
-                      {mediaUrl && (
+                      {post.media && (
                         <div className={styles.singleCard_image}>
-                          <img src={`${BASE_URL}/${mediaUrl}`} alt="" />
+                          <img src={getMediaUrl(post.media)} alt="" />
                         </div>
                       )}
                       <div className={styles.optionContainer}>

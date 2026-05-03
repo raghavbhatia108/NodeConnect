@@ -16,7 +16,7 @@ const allowedOrigins = process.env.CLIENT_URL
   : ['http://localhost:3000'];
 
 app.use(cors());
-app.options('*', cors());
+app.options('/*', cors());
 app.use(postRoutes);
 
 app.use(userRoutes);

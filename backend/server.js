@@ -15,16 +15,8 @@ const allowedOrigins = process.env.CLIENT_URL
   ? process.env.CLIENT_URL.split(',').map(o => o.trim())
   : ['http://localhost:3000'];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-}));
+app.use(cors());
+app.options('*', cors());
 app.use(postRoutes);
 
 app.use(userRoutes);

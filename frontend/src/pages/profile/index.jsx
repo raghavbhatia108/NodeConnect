@@ -40,7 +40,7 @@ const handleEducationInputChange = (e) => {
 
   const getMediaUrl = (path) => {
     if (!path) return null;
-    if (path.startsWith("data:")) return path;
+    if (path.startsWith("http")) return path;
     const cleanPath = path.replace(/\\/g, "/");
     if (cleanPath.startsWith("uploads/")) return `${BASE_URL}/${cleanPath}`;
     return `${BASE_URL}/uploads/${cleanPath}`;

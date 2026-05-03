@@ -8,10 +8,11 @@ import { sendConnectionRequest } from '../controllers/users.controllers.js';
 import { getMyConnectionsRequests } from '../controllers/users.controllers.js';
 import { acceptConnectionRequest } from '../controllers/users.controllers.js';  
 import multer from 'multer';
+import { profilePicStorage } from '../config/cloudinary.js';
 
 const router = Router();
 
-const upload = multer({ storage: multer.memoryStorage() });
+const upload = multer({ storage: profilePicStorage });
 
 router.route("/update_profile_pic").post(upload.single('profile_pic'), uploadProfilePic);
 

@@ -18,7 +18,7 @@ export const createPost = async (req, res) => {
         const post = new Post({
             userId: user._id,
             body: req.body.body,
-            media: req.file ? `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}` : '',
+            media: req.file ? req.file.path : '',
             fileType: req.file != undefined ? req.file.mimetype.split('/')[1] : ''
         })
         await post.save();

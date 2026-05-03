@@ -67,7 +67,7 @@ const MyConnectionsPage = () => {
                   >
                     <div className={styles.profilePicture}>
                       <img
-                        src={request.otherUser.profilePicture?.startsWith('data:') ? request.otherUser.profilePicture : `${BASE_URL}/uploads/${request.otherUser.profilePicture}`}
+                        src={request.otherUser.profilePicture?.startsWith('http') ? request.otherUser.profilePicture : `${BASE_URL}/uploads/${request.otherUser.profilePicture}`}
                         alt=""
                       />
                     </div>
@@ -122,7 +122,7 @@ const MyConnectionsPage = () => {
                     >
                       <div className={styles.profilePicture}>
                         <img
-                          src={request.otherUser.profilePicture?.startsWith('data:') ? request.otherUser.profilePicture : `${BASE_URL}/uploads/${request.otherUser.profilePicture}`}
+                          src={request.otherUser.profilePicture?.startsWith('http') ? request.otherUser.profilePicture : `${BASE_URL}/uploads/${request.otherUser.profilePicture}`}
                           alt=""
                         />
                       </div>

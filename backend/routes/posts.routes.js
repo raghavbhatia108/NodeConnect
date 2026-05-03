@@ -3,10 +3,11 @@ import { activeCheck, commentPost, deleteCommentOfUser, deletePost, getCommentsB
 import {Router} from 'express';
 import { createPost } from "../controllers/posts.controllers.js";
 import { getAllPosts } from "../controllers/posts.controllers.js";
+import { postMediaStorage } from '../config/cloudinary.js';
 
 const router = Router();
 
-const upload = multer({ storage: multer.memoryStorage() });
+const upload = multer({ storage: postMediaStorage });
 
 router.route('/').get(activeCheck);
 router.route('/post').post(upload.single('media'), createPost);

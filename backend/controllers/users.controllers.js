@@ -13,13 +13,13 @@ const convertUserDataToPDF = async (userData) => {
   const absolutePath = path.join(process.cwd(), "uploads", filename);
   const stream = fs.createWriteStream(absolutePath);
   doc.pipe(stream);
-  const picData = userData.userId.profilePicture?.startsWith('data:')
-    ? Buffer.from(userData.userId.profilePicture.split(',')[1], 'base64')
-    : `uploads/${userData.userId.profilePicture}`;
-  doc.image(picData, {
-    align: "center",
-    width: 100,
-  });
+  if (userData.userId.profilePicture) {
+    try {
+      const res = await fetch(userData.userId.profilePicture);
+      const buf = Buffer.from(await res.arrayBuffer());
+      doc.image(buf, { align: 'center', width: 100 });
+    } catch (_) {}
+  }
   doc.fontSize(14).text(`Name: ${userData.userId.name}`);
   doc.fontSize(14).text(`Email: ${userData.userId.email}`);
   doc.fontSize(14).text(`Username: ${userData.userId.username}`);
@@ -116,7 +116,7 @@ export const uploadProfilePic = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    user.profilePicture = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+    user.profilePicture = req.file.path;
     await user.save();
     res.status(200).json({ message: "Profile picture updated successfully" });
   } catch (error) {

@@ -11,11 +11,23 @@ dotenv.config();
 const app = express(); 
 app.use(express.json());
 
-const allowedOrigins = process.env.CLIENT_URL
-  ? process.env.CLIENT_URL.split(',').map(o => o.trim())
-  : ['http://localhost:3000'];
+const allowedOrigins = [
+  'https://node-connect-vxz7.vercel.app',
+  'http://localhost:3000'
+];
 
-app.use(cors());
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
+}));
 app.use(postRoutes);
 
 app.use(userRoutes);

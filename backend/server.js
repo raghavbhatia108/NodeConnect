@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 
 const allowedOrigins = [
-  'https://node-connect-vxz7.vercel.app',
+  'https://node-connect-yzx7.vercel.app',
   'http://localhost:3000'
 ];
 

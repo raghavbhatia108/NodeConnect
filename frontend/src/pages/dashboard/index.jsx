@@ -32,19 +32,12 @@ const Dashboard = () => {
   const authState = useSelector((state) => state.auth || {});
 
   const getMediaUrl = (path) => {
-  if (!path) return `${BASE_URL}/uploads/default.jpg`; // Fallback image
-
-  // 1. Clean up Windows backslashes
-  let cleanPath = path.replace(/\\/g, "/");
-
-  // 2. Check if path already starts with "uploads/" to avoid double "/uploads/uploads/"
-  if (cleanPath.startsWith("uploads/")) {
-      return `${BASE_URL}/${cleanPath}`;
-  }
-
-  // 3. If it's just a filename, add the uploads prefix
-  return `${BASE_URL}/uploads/${cleanPath}`;
-};
+    if (!path) return null;
+    if (path.startsWith("data:")) return path;
+    let cleanPath = path.replace(/\\/g, "/");
+    if (cleanPath.startsWith("uploads/")) return `${BASE_URL}/${cleanPath}`;
+    return `${BASE_URL}/uploads/${cleanPath}`;
+  };
 
 
   // 2. Fetch data ONLY when token is confirmed and ONLY ONCE
@@ -66,7 +59,7 @@ const Dashboard = () => {
             <div className={styles.scrollComponent}>
               <div className={styles.createPostContainer}>
                 <img
-                  src={`${BASE_URL}/uploads/${authState.user.userId.profilePicture}`}
+                  src={getMediaUrl(authState.user.userId.profilePicture)}
                   alt="Profile"
                   width={100}
                   className={styles.userProfile}

@@ -26,7 +26,7 @@ const DiscoverPage = () => {
         {authState.all_profiles_fetched && authState.all_users.map((user)=>{
           return (
             <div key={user._id} className={styles.userCard} onClick={()=> router.push(`/view_profile/${user.userId.username}`)}>
-              <img src={`${BASE_URL}/uploads/${user.userId.profilePicture}`} alt="Profile" />
+              <img src={user.userId.profilePicture?.startsWith('data:') ? user.userId.profilePicture : `${BASE_URL}/uploads/${user.userId.profilePicture}`} alt="Profile" />
               <div>
  <h1>{user.userId.name}</h1>
               <p>{user.userId.username}</p>

@@ -117,7 +117,7 @@ const DashboardLayout = ({ children }) => {
                     onClick={() => router.push(`/view_profile/${profile.userId?.username}`)}
                   >
                     <img
-                      src={`${BASE_URL}/uploads/${profile.userId?.profilePicture}`}
+                      src={profile.userId?.profilePicture?.startsWith('data:') ? profile.userId.profilePicture : `${BASE_URL}/uploads/${profile.userId?.profilePicture}`}
                       alt={profile.userId?.name}
                       className={styles.profileImage}
                     />

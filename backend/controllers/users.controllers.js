@@ -13,7 +13,10 @@ const convertUserDataToPDF = async (userData) => {
   const absolutePath = path.join(process.cwd(), "uploads", filename);
   const stream = fs.createWriteStream(absolutePath);
   doc.pipe(stream);
-  doc.image(`uploads/${userData.userId.profilePicture}`, {
+  const picData = userData.userId.profilePicture?.startsWith('data:')
+    ? Buffer.from(userData.userId.profilePicture.split(',')[1], 'base64')
+    : `uploads/${userData.userId.profilePicture}`;
+  doc.image(picData, {
     align: "center",
     width: 100,
   });
@@ -113,7 +116,7 @@ export const uploadProfilePic = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    user.profilePicture = req.file.filename;
+    user.profilePicture = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
     await user.save();
     res.status(200).json({ message: "Profile picture updated successfully" });
   } catch (error) {

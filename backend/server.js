@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import fs from 'fs';
 
 import postRoutes from './routes/posts.routes.js';
 import userRoutes from './routes/user.routes.js';
@@ -34,6 +35,7 @@ app.use(userRoutes);
 app.use('/uploads', express.static('uploads'));
 const PORT = process.env.PORT || 9080;
 const start = async() =>{
+    fs.mkdirSync('uploads', { recursive: true });
     const connectDB = await mongoose.connect(process.env.MONGO_URI);
     app.listen(PORT, () =>{
         console.log(`Server is running on port ${PORT}`);

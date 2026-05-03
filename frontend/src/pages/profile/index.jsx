@@ -39,7 +39,8 @@ const handleEducationInputChange = (e) => {
 
 
   const getMediaUrl = (path) => {
-    if (!path) return `${BASE_URL}/uploads/default.jpg`;
+    if (!path) return null;
+    if (path.startsWith("data:")) return path;
     const cleanPath = path.replace(/\\/g, "/");
     if (cleanPath.startsWith("uploads/")) return `${BASE_URL}/${cleanPath}`;
     return `${BASE_URL}/uploads/${cleanPath}`;
@@ -98,7 +99,7 @@ const updateProfileData = async () => {
               <div className={styles.container}>
           <div className={styles.backdropContainer}>
             <img
-              src={`${BASE_URL}/uploads/${userProfile?.userId?.profilePicture}`}
+              src={getMediaUrl(userProfile?.userId?.profilePicture)}
               alt=""
               className={styles.backdrop}
             />

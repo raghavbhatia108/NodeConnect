@@ -8,21 +8,10 @@ import { sendConnectionRequest } from '../controllers/users.controllers.js';
 import { getMyConnectionsRequests } from '../controllers/users.controllers.js';
 import { acceptConnectionRequest } from '../controllers/users.controllers.js';  
 import multer from 'multer';
-import { get } from 'mongoose';
 
 const router = Router();
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb){
-        cb(null, 'uploads/');
-
-    },
-    filename: function (req, file, cb){
-        cb(null, file.originalname);
-    }
-});
-
-const upload = multer({storage: storage});
+const upload = multer({ storage: multer.memoryStorage() });
 
 router.route("/update_profile_pic").post(upload.single('profile_pic'), uploadProfilePic);
 
